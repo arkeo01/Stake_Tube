@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Testing</title>
+</head>
+<script type = "text/javascript">
+            function Redirect() {
+               window.location = "playback.html";
+            }
+</script>
+
+<script src="./web3.js"></script>
+<script src = "js/app.js"> </script>
+
+<body>
+<center>
+    <header> <button id="submitButton" onclick= window.location="upload.html"> Submit-video </button></header>
+<!--    1.-->
+    <video controls poster="images/1.jpg" class="center" id="myVideo_1" loop = "loop" width="320" height="260" >
+        <source src="images/Test_video_1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+     <button  id = "vidButton_1" onclick="startVideo(1);">Play/Pause</button>
+<!--    2.-->
+    <video poster="images/2.jpg" class="center" id="myVideo_2" loop = "loop" width="320" height="260" controls>
+        <source src="images/Test_video_2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button onclick="startVideo(1); Redirect();">Play/Pause</button>
+<!--    3.-->
+    <video poster="images/3.jpg" class="center" id="myVideo_3" loop = "loop" width="320" height="260" controls>
+        <source src="images/Test_video_3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button onclick="startVideo(1); Redirect();">Play/Pause</button>
+<!--    4.-->
+    <video poster="images/4.jpg" class="center" id="myVideo_4" loop = "loop" width="320" height="260" controls>
+        <source src="images/Test_video_1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button onclick="startVideo(1); Redirect();">Play/Pause</button>
+<!--    5.-->
+    <video poster="images/5.jpg" class="center" id="myVideo_5" loop = "loop" width="320" height="260" controls>
+        <source src="images/Test_video_2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button onclick="startVideo(1); Redirect();">Play/Pause</button>
+<!--    6.-->
+    <video poster="images/6.jpg" class="center" id="myVideo_6" loop = "loop" width="320" height="260" controls>
+        <source src="images/Test_video_3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button onclick="startVideo(1); Redirect();">Play/Pause</button>
+</center>
+
+</body>
+</html>

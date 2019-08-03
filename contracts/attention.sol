@@ -66,7 +66,6 @@ contract Attention {
         //Persisting Video and User
         videos[_videoId] = videoClicked;
     }
-
     function displayViews(uint _videoId) public view returns(uint) {
         return videos[_videoId].users.length - 1;
     }
