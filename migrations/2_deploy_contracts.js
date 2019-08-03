@@ -1,4 +1,4 @@
-var Attention = artifacts.require("./attention.sol");
+var Attention = artifacts.require("Attention");
 
 module.exports = function(deployer){
     deployer.deploy(Attention);

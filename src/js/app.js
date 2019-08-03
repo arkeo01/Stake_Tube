@@ -1,20 +1,84 @@
-// import attentionABI from './attentionABI'
+var attentionABI = [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "last_completed_migration",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "completed",
+          "type": "uint256"
+        }
+      ],
+      "name": "setCompleted",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "new_address",
+          "type": "address"
+        }
+      ],
+      "name": "upgrade",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+    <script src="./web3.js"> </script>
 var web3 = new Web3(window.web3.currentProvider);
 
 let metamaskWeb3 = new Web3('http://localhost:7545')
 let account = null
 let attentionContract
-let attentionContractAddress = '' // Paste Contract address here
+let attentionContractAddress = '0x25D1B5506F0cf862552156fB40397723F2504808' // Paste Contract address here
 
-export function web3_1() {
+ function web3_1() {
     return metamaskWeb3
 }
 
-export const accountAddress = () => {
+ const accountAddress = () => {
     return account
 }
 
-export async function setProvider() {
+ async function setProvider() {
     // TODO: get injected Metamask Object and create Web3 instance
     if (window.ethereum) {
         metamaskWeb3 = new Web3(ethereum);
@@ -22,6 +86,7 @@ export async function setProvider() {
             // Request account access if needed
             await ethereum.enable();
         } catch (error) {
+            console.log(error);
             // User denied account access...
         }
     }
@@ -39,7 +104,7 @@ function getattentionContract() {
 
 }
 
-export async function postVideo(name, description) {
+ async function postVideo(name, description) {
     // TODO: call attention.addVideo
     const prop = await getattentionContract().methods.addVideo(name, description).send({
         from: account[0]
@@ -47,7 +112,7 @@ export async function postVideo(name, description) {
     alert('Video Posted Successfully')
 }
 
-export async function startVideo(videoId) {
+ async function startVideo(videoId) {
     // TODO: call attention.videoEarnings
     const prop = await getattentionContract().methods.videoEarnings(videoId).send({
         from: account[0]
