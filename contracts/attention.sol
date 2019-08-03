@@ -8,7 +8,8 @@
 pragma solidity ^0.5.7;
 
 contract Attention {
-    uint initialViewFee = 4 wei;       // UNIT OF CRYPTOCURRENCY TO BE TAKEN CARE OF
+    uint initialViewFee = 10 ether;
+    address payable owner = 0xed1e55870F62f65d158227460F4C2C7A2FcFF2b1;
 
     struct Video {
         string name;
@@ -20,7 +21,7 @@ contract Attention {
         //bool isPrivate;
     }
 
-    uint videoNos = 0;
+    uint public videoNos;
     mapping (uint => Video) public videos;
 
     // Including users and Videos array hence no need to declare a constructor
@@ -50,7 +51,8 @@ contract Attention {
 
         uint views = videoClicked.users.length - 1;
         //videoClicked.creatorId.transfer(initialViewFee/2);
-        videoClicked.users[0].transfer(initialViewFee/2);
+        owner.transfer(initialViewFee/80);      //5% of value for the company
+        videoClicked.users[0].transfer(9*initialViewFee/20);
         uint deno = views*(views + 1)/2;
         uint fraction = 0;
         uint num = 0;
@@ -63,5 +65,9 @@ contract Attention {
         videoClicked.users.push(msg.sender);                      //Check Whether the user is already in the users List
         //Persisting Video and User
         videos[_videoId] = videoClicked;
+    }
+
+    function displayViews(uint _videoId) public view returns(uint) {
+        return videos[_videoId].users.length - 1;
     }
 }
